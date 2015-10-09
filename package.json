@@ -1,6 +1,6 @@
 {
   "name": "coffeerest-api-frontend-embedwebwidget",
-  "version": "0.1.48",
+  "version": "0.1.49",
   "description": "Unfancy rest apis, frontend skeleton for third party web widget + embedcode",
   "main": "index.js",
   "scripts": {
