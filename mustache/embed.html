@@ -1,0 +1,10 @@
+<div id="{{webwidget.id}}"></div> {{* http://blog.errorception.com/2012/01/writing-quality-third-party-js-part-2.html *}}
+<script>
+(function (window, document) {
+  var loader = function () {
+    var id = "YOUR_{{#uppercase}}{{webwidget.id}}{{/uppercase}}_TOKEN_HERE";
+    var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
+    script.src = "{{{webwidget.transport}}}{{{host}}}{{{urlprefix}}}{{{webwidget.urls.js}}}?id="+id; tag.parentNode.insertBefore(script, tag);
+  }; window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+})(window, document);
+</script>
