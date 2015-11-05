@@ -17,6 +17,7 @@ Just add these fields to your coffeerest-api `model.coffee` specification
     --->       app:
     --->         files:
     --->           js: [ __dirname+"/public/embed/ractive.min.js", __dirname+"/public/embed/app.js"]
+    --->           css: [ __dirname+"/public/embed/style.css"]
 
 ## Usage 
 
@@ -33,7 +34,7 @@ for servercode see [coffeerest-api](https://www.npmjs.com/package/coffeerest-api
 
 Your embedcode will look like this:
 
-    <div id="plaatz"></div> 
+    <div class="cleanslate" id="plaatz"></div> 
     <script>
     (function (window, document) {
       var loader = function () {
@@ -46,3 +47,9 @@ Your embedcode will look like this:
 
 Voila, you have a wonderful startingpoint to build 3rd party webwidgets.
 The `script.src`-url will return the concatenated string of all files defined in `webwidget.app.files.js`
+
+## Notes
+
+* the embedded js includes [cleanslate](https://github.com/premasagar/cleanslate) to achieve css isolation 
+  * Therefore dont remove the class 'cleanslate' of the container element of the widget
+  * Therefore add !important to all of the widget's CSS rules

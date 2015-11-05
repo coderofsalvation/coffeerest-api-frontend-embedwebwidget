@@ -3,11 +3,12 @@ module.exports =
   properties:
     webwidget:
       type: 'object'
-      required: ['id','urls','transport','app']
+      required: ['tags','urls','transport','app']
       properties:
-        id: 
-          type: 'string'
-          default: 'foo'
+        tags: 
+          type: 'array'
+          default: ["foo","bar"]
+          items: [{ "type":"string"}]
         transport: 
           type: 'string'
           default: "http://"
@@ -23,3 +24,4 @@ module.exports =
               type: 'object'
               properties:
                 js: { type: 'array', items: [{ type: 'string' }], minLength: 1 }
+                css: { type: 'array', items: [{ type: 'string' }], minLength: 1 }

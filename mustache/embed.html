@@ -1,10 +1,19 @@
-<div id="{{webwidget.id}}"></div> {{* http://blog.errorception.com/2012/01/writing-quality-third-party-js-part-2.html *}}
+<!--
+  -- if you prefer iframe instead of inline usage:
+  --   <iframe src="{{{webwidget.transport}}}{{{host}}}{{{urlprefix}}}{{{webwidget.urls.js}}}?{{{querystring}}}&id=YOUR_{{#uppercase}}{{webwidget.id}}{{/uppercase}}_TOKEN_HERE"></iframe>
+  -->
+
+{{#webwidget.tags}}
+<{{.}} class="{{webwidget.id}}"></{{.}}> 
+{{/webwidget.tags}}
+
+{{* http://blog.errorception.com/2012/01/writing-quality-third-party-js-part-2.html *}}
 <script>
 (function (window, document) {
   var loader = function () {
-    var id = "YOUR_{{#uppercase}}{{webwidget.id}}{{/uppercase}}_TOKEN_HERE";
+    var id = "{{#query.id}}{{query.id}}{{/query.id}}{{^query.id}}YOUR_{{#uppercase}}{{webwidget.id}}{{/uppercase}}_TOKEN_HERE{{/query.id}}";
     var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
-    script.src = "{{{webwidget.transport}}}{{{host}}}{{{urlprefix}}}{{{webwidget.urls.js}}}?id="+id; tag.parentNode.insertBefore(script, tag);
+    script.src = "{{{webwidget.transport}}}{{{host}}}{{{urlprefix}}}{{{webwidget.urls.js}}}?{{{querystring}}}&id="+id; tag.parentNode.insertBefore(script, tag);
   }; window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
 })(window, document);
 </script>
